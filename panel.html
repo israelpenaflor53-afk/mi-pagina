@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polar Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Orbitron',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:linear-gradient(
+        to bottom,
+        #00111f,
+        #003366,
+        #0a4d68,
+        #7ec8e3
+    );
+}
+
+#snow{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+}
+
+.card{
+    width:380px;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 30px rgba(0,0,0,.4);
+    z-index:10;
+}
+
+.titulo{
+    color:white;
+    font-size:32px;
+    margin-bottom:20px;
+    text-shadow:0 0 15px #fff;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:none;
+    border-radius:12px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    color:white;
+    font-size:15px;
+    background:linear-gradient(
+        90deg,
+        #00c6ff,
+        #0072ff
+    );
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+#msg{
+    color:white;
+    margin-top:10px;
+}
+
+.perfil{
+    display:none;
+    text-align:center;
+    color:white;
+    z-index:10;
+}
+
+.avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border:4px solid white;
+    object-fit:cover;
+    box-shadow:0 0 20px white;
+}
+
+.nombre{
+    margin-top:15px;
+    font-size:35px;
+    text-shadow:0 0 10px white;
+}
+
+.bio{
+    margin-top:10px;
+    opacity:.9;
+}
+
+.link{
+    display:block;
+    margin-top:12px;
+    padding:12px;
+    border-radius:12px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.15);
+    transition:.3s;
+}
+
+.link:hover{
+    transform:scale(1.05);
+}
+
+</style>
+</head>
+<body>
+
+<div id="snow"></div>
+
+<div class="card" id="loginBox">
+
+    <h1 class="titulo">?? LOGIN POLAR ??</h1>
+
+    <input type="text" id="usuario" placeholder="Usuario">
+
+    <input type="password" id="password" placeholder="Contraseña">
+
+    <button onclick="login()">Entrar</button>
+
+    <p id="msg"></p>
+
+</div>
+
+<div class="perfil" id="perfil">
+
+    <img class="avatar"
+    src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+    <h1 class="nombre" id="nombre"></h1>
+
+    <p class="bio">
+        ?? Owner Verificado<br>
+        ?? Panel Polar<br>
+        ?? Bienvenido al sistema
+    </p>
+
+    <a href="#" class="link">?? Discord</a>
+    <a href="#" class="link">?? TikTok</a>
+    <a href="#" class="link">?? YouTube</a>
+    <a href="#" class="link">?? Instagram</a>
+
+    <br>
+
+    <button onclick="logout()">Cerrar Sesión</button>
+
+</div>
+
+<script>
+
+const snowContainer = document.getElementById("snow");
+
+for(let i=0;i<200;i++){
+
+    let snow = document.createElement("div");
+
+    let size = Math.random()*6+2;
+
+    snow.style.position="fixed";
+    snow.style.width=size+"px";
+    snow.style.height=size+"px";
+    snow.style.background="white";
+    snow.style.borderRadius="50%";
+
+    snow.style.left=Math.random()*100+"vw";
+    snow.style.top="-10px";
+
+    snow.style.opacity=Math.random();
+
+    snow.style.animation=
+    `fall ${Math.random()*10+5}s linear infinite`;
+
+    snow.style.animationDelay=
+    Math.random()*5+"s";
+
+    snowContainer.appendChild(snow);
+}
+
+const style = document.createElement("style");
+
+style.innerHTML = `
+@keyframes fall{
+    from{
+        transform:translateY(-10vh);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+`;
+
+document.head.appendChild(style);
+
+function login(){
+
+    let usuario =
+    document.getElementById("usuario").value.toLowerCase();
+
+    let password =
+    document.getElementById("password").value;
+
+    const owners = [
+        "navarro",
+        "franz",
+        "chusin",
+        "azpiasu"
+    ];
+
+    if(
+        owners.includes(usuario)
+        && password === "12345"
+    ){
+
+        document.getElementById("loginBox").style.display="none";
+
+        document.getElementById("perfil").style.display="block";
+
+        document.getElementById("nombre").innerHTML =
+        "?? " + usuario.toUpperCase();
+
+    }
+    else{
+
+        document.getElementById("msg").innerHTML =
+        "? Usuario o contraseña incorrectos";
+
+    }
+}
+
+function logout(){
+    location.reload();
+}
+
+</script>
+
+</body>
+</html>

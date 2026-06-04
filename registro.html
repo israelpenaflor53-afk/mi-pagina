@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Registro</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="registro.html">Registro</a>
+      <a href="panel.html">Panel</a>
+    </nav>
+  </header>
+  <main>
+    <form id="registroForm" onsubmit="registrar(); return false;">
+      <label for="nuevoUser">Usuario:</label>
+      <input type="text" id="nuevoUser" name="nuevoUser" required>
+
+      <label for="nuevoPass">Contraseña:</label>
+      <input type="password" id="nuevoPass" name="nuevoPass" required>
+
+      <button type="submit">Registrarse</button>
+    </form>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

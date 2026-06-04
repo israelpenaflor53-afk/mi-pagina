@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login RGB</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+    );
+    background-size:400% 400%;
+    animation:rainbow 10s ease infinite;
+}
+
+@keyframes rainbow{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.caja{
+    width:350px;
+    padding:35px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+}
+
+.titulo{
+    font-family:'Orbitron', sans-serif;
+    font-size:36px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    background:linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:brillo 5s linear infinite;
+}
+
+@keyframes brillo{
+    from{background-position:0%;}
+    to{background-position:300%;}
+}
+
+input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
+
+button{
+    width:95%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    color:white;
+    background:linear-gradient(90deg,#ff0080,#7928ca,#2afadf);
+    background-size:300%;
+    animation:brilloBoton 5s linear infinite;
+}
+
+@keyframes brilloBoton{
+    from{background-position:0%;}
+    to{background-position:300%;}
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#mensaje{
+    color:white;
+    font-weight:bold;
+    margin-top:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="caja">
+
+    <h2 class="titulo">Iniciar Sesión</h2>
+
+    <input type="text" id="usuario" placeholder="Usuario">
+
+    <input type="password" id="password" placeholder="Contraseña">
+
+    <button onclick="login()">Entrar</button>
+
+    <p id="mensaje"></p>
+
+</div>
+
+<script>
+function login(){
+
+    let usuario = document.getElementById("usuario").value.toLowerCase();
+    let password = document.getElementById("password").value;
+
+    const owners = [
+        "navarro",
+        "franz",
+        "chusin",
+        "azpiasu"
+    ];
+
+    if(owners.includes(usuario) && password === "12345"){
+        document.getElementById("mensaje").innerHTML =
+        "👑 Bienvenido Owner: " + usuario;
+    }else{
+        document.getElementById("mensaje").innerHTML =
+        "❌ Usuario o contraseña incorrectos";
+    }
+}
+</script>
+
+</body>
+</html>
